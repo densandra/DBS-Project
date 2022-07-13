@@ -9,20 +9,18 @@
             $_POST["limit"] += 1;
             
             // SQL-Query für Tabelle zusammensetzen und abschicken
-            $query =   "SELECT h.device, h.ar_vs_vr, STRING_AGG(aha.vorname || ' ' || aha.nachname, ', ') AS autor, ar.titel, ar.jahr, ar.journal
+            $query =   "SELECT h.name, h.typ, STRING_AGG(da.vorname || ' ' || da.nachname, ', ') AS autor, ar.titel, ar.jahr, ar.journal
                         FROM artikel ar
-                        JOIN Artikel_has_Autor aha ON ar.DOI = aha.DOI
-                        JOIN Artikel_has_Review ahr ON ar.DOI = ahr.A_DOI
-                        JOIN Review r ON ahr.R_DOI = r.DOI
-                        JOIN Review_uses_HMD ruh ON r.DOI = ruh.DOI
-                        JOIN HMD h ON ruh.device = h.device
-                        WHERE h.device ILIKE '%!device_filter%'
-                        AND h.ar_vs_vr LIKE '%!ar_vs_vr_filter%'
+                        JOIN doi_autor da ON ar.DOI = da.DOI
+                        JOIN doi_hmd dh ON ar.DOI = dh.DOI
+                        JOIN hmd h ON dh.name = h.name
+                        WHERE h.name ILIKE '%!device_filter%'
+                        AND h.typ LIKE '%!ar_vs_vr_filter%'
                         AND ar.titel ILIKE '%!titel_filter%'
                         AND ar.jahr >= !min_a_jahr_filter AND ar.jahr <= !max_a_jahr_filter
                         AND ar.journal ILIKE '%!journal_filter%'
-                        GROUP BY h.device, h.ar_vs_vr, ar.titel, ar.jahr, ar.journal
-                        HAVING STRING_AGG(aha.vorname || ' ' || aha.nachname, ', ') ILIKE '%!autor_filter%'
+                        GROUP BY h.name, h.typ, ar.titel, ar.jahr, ar.journal
+                        HAVING STRING_AGG(da.vorname || ' ' || da.nachname, ', ') ILIKE '%!autor_filter%'
                         ORDER BY !orderBy !order
                         LIMIT !limit";
             
@@ -58,15 +56,14 @@
                     break;
                 }
                 $table_rows[] = "<tr class=\"row\">
-                                <td>" . search_highlight($row["device"], $_POST["device_filter"]) . "</td>
-                                <td>" . $row["ar_vs_vr"] . "</td>
+                                <td>" . search_highlight($row["name"], $_POST["device_filter"]) . "</td>
+                                <td>" . $row["typ"] . "</td>
                                 <td>" . search_highlight($row["autor"], $_POST["autor_filter"]) . "</td>
                                 <td>" . search_highlight($row["titel"], $_POST["titel_filter"]) . "</td>
                                 <td>" . $row["jahr"] . "</td>
                                 <td>" . search_highlight($row["journal"], $_POST["journal_filter"]) . "</td>
                             </tr>"; 
             }
-            $reply->query = $_POST["ar_vs_vr_filter"] == "-" ? "" : "AND h.ar_vs_vr = '" . $_POST["ar_vs_vr_filter"] . "'";
             $reply->table_rows = $table_rows;
             break;
         default:
