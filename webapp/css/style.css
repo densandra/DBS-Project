@@ -73,7 +73,7 @@ li a:hover, .active, .sortable:hover {
 }
 
 #max_a_jahr_filter, #min_a_jahr_filter {
-    width: 30px;
+    width: 35px;
 }
 
 .highlight {
@@ -101,9 +101,14 @@ th {
     font-weight: bold;
 }
 
-#a_jahr_column {
-    width: 85px;
+input[type="text"] {
+    box-sizing: border-box;
+    width: 100%;
 }
+
+/* #a_jahr_column {
+    width: 85px;
+} */
 
 /* #autor_column, #titel_column {
     width: 80px;

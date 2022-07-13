@@ -59,6 +59,7 @@ function getTable() {
     ajaxCall("table", {
         action: "load_table",
         device_filter: $("#device_filter").val(),
+        ar_vs_vr_filter: $("#ar_vs_vr_filter").val(),
         autor_filter: $("#autor_filter").val(),
         titel_filter: $("#titel_filter").val(),
         min_a_jahr_filter: $("#min_a_jahr_filter").val(),
