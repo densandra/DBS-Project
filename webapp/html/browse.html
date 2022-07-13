@@ -3,11 +3,14 @@
         <th id="autor_column">
             Autor
         </th>
-        <th id="titel_column" class="sortable asc" data-defaultorder="asc" data-sort="titel">
+        <th id="titel_column" class="sortable asc" data-defaultorder="asc" data-sort="ar.titel">
             Titel
         </th>
-        <th id="a_jahr_column" class="sortable desc nulls_last" data-defaultorder="desc nulls_last" data-sort="jahr">
+        <th id="a_jahr_column" class="sortable desc nulls_last" data-defaultorder="desc nulls_last" data-sort="ar.jahr">
             Artikeljahr
+        </th>
+        <th id="journal_column" class="sortable asc" data-defaultorder="asc" data-sort="ar.journal">
+            Journal
         </th>
     </tr>
     <tr>
@@ -21,8 +24,12 @@
             <input id="min_a_jahr_filter" placeholder="min" type="text" autocomplete="off">
             <input id="max_a_jahr_filter" placeholder="max" type="text" autocomplete="off">
         </td>
+        <td class="filter">
+            <input id="journal_filter" type="text" autocomplete="off">
+        </td>
     </tr>
 </table>
-<!-- Journal
+<!--
 Empirisch, Feld, Thema
-Gerätename, VR vs. AR, Hersteller, Jahr, Display Type -->
+Gerätename, VR vs. AR, Hersteller, Jahr, Display Type
+-->

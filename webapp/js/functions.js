@@ -62,6 +62,7 @@ function getTable() {
         titel_filter: $("#titel_filter").val(),
         min_a_jahr_filter: $("#min_a_jahr_filter").val(),
         max_a_jahr_filter: $("#max_a_jahr_filter").val(),
+        journal_filter: $("#journal_filter").val(),
         limit: limit,
         // nulls: nulls,
         orderBy: $("th.active").attr("data-sort"), 

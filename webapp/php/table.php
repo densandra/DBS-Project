@@ -9,12 +9,13 @@
             $_POST["limit"] += 1;
             
             // SQL-Query für Tabelle zusammensetzen und abschicken
-            $query =   "SELECT STRING_AGG(aha.vorname || ' ' || aha.nachname, ', ') AS autor, ar.titel, ar.jahr
+            $query =   "SELECT STRING_AGG(aha.vorname || ' ' || aha.nachname, ', ') AS autor, ar.titel, ar.jahr, ar.journal
                         FROM artikel ar
                         JOIN Artikel_has_Autor aha USING(DOI)
                         WHERE ar.titel ILIKE '%!titel_filter%'
                         AND ar.jahr >= !min_a_jahr_filter AND ar.jahr <= !max_a_jahr_filter
-                        GROUP BY ar.titel, ar.jahr
+                        AND ar.journal ILIKE '%!journal_filter%'
+                        GROUP BY ar.titel, ar.jahr, ar.journal
                         HAVING STRING_AGG(aha.vorname || ' ' || aha.nachname, ', ') ILIKE '%!autor_filter%'
                         ORDER BY !orderBy !order
                         LIMIT !limit";
@@ -22,10 +23,11 @@
             // Query abschicken
             $result = $DB->send_query($query, 
                 array(
-                    "!titel_filter" => $_POST["titel_filter"],
                     "!autor_filter" => $_POST["autor_filter"],
+                    "!titel_filter" => $_POST["titel_filter"],
                     "!min_a_jahr_filter" => $_POST["min_a_jahr_filter"] == "" ? 0 : $_POST["min_a_jahr_filter"],
                     "!max_a_jahr_filter" => $_POST["max_a_jahr_filter"] == "" ? 3000 : $_POST["max_a_jahr_filter"],
+                    "!journal_filter" => $_POST["journal_filter"],
                     "!limit" => $_POST["limit"],
                     "!orderBy" => $_POST["orderBy"],
                     "!order" => $_POST["order"]
@@ -51,6 +53,7 @@
                                 <td>" . search_highlight($row["autor"], $_POST["autor_filter"]) . "</td>
                                 <td>" . search_highlight($row["titel"], $_POST["titel_filter"]) . "</td>
                                 <td>" . $row["jahr"] . "</td>
+                                <td>" . search_highlight($row["journal"], $_POST["journal_filter"]) . "</td>
                             </tr>"; 
             }
 
