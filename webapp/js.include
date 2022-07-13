@@ -1,0 +1,5 @@
+<script src="system/jquery-3.3.1.min.js"></script>
+<script src="js/ajax.js"></script> 
+<script src="js/events.js"></script> 
+<script src="js/functions.js"></script> 
+<link rel="stylesheet" type="text/css" href="css/style.css">

@@ -1,0 +1,118 @@
+/*
+ * Body
+ */
+
+html {
+    overflow-y:scroll;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+}
+
+#ajax_content {
+    /* width: 940px; */
+    min-height: 750px;
+    padding: 20px 0 0 0;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: auto;
+}
+
+/*
+ * Navigation Bar
+ */
+
+#header {
+    /* width: 980px; */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #1A243E;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    cursor: pointer;
+    display: inline-block;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover, .active, .sortable:hover {
+    background-color: #757575;
+    cursor: pointer;
+}
+
+/*
+ * Browse Page
+ */
+.selectelement_label, input[type="checkbox"]{
+    display: inline;
+}
+
+.selectelement_label_margin {
+    margin-left: 10px;
+}
+
+.filter {
+    background: #EFEFEF;
+}
+
+#max_a_jahr_filter, #min_a_jahr_filter {
+    width: 30px;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #7e9ff0;
+}
+
+table {
+    border-collapse: collapse;
+    table-layout: fixed; 
+    width:100%;
+}
+
+td, th {
+    border: 1px solid #FFF;   
+    text-align: left;
+    padding: 2px 6px;
+    word-wrap: break-word;
+    overflow-wrap: break-word; 
+}
+
+th {
+    background: #1A243E;
+    color: #FFF;
+    font-weight: bold;
+}
+
+#a_jahr_column {
+    width: 85px;
+}
+
+/* #autor_column, #titel_column {
+    width: 80px;
+} */
+
+tr {
+    background: #EFEFEF;
+}
+
+tr:hover {
+    background-color: #ccc;
+}
