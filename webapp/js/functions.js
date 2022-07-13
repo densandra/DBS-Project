@@ -39,7 +39,7 @@ function loadViewSettings(ansicht) {
     $("#" + ansicht).addClass("active");
     switch(ansicht) {
         case "browse":
-            $("#titel_column").addClass("active");
+            $("#device_column").addClass("active");
             limit = 100;
             getTable();
             break;
@@ -58,6 +58,7 @@ function getTable() {
     // Tabellenzeilen laden
     ajaxCall("table", {
         action: "load_table",
+        device_filter: $("#device_filter").val(),
         autor_filter: $("#autor_filter").val(),
         titel_filter: $("#titel_filter").val(),
         min_a_jahr_filter: $("#min_a_jahr_filter").val(),

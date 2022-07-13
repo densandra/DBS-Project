@@ -9,13 +9,18 @@
             $_POST["limit"] += 1;
             
             // SQL-Query für Tabelle zusammensetzen und abschicken
-            $query =   "SELECT STRING_AGG(aha.vorname || ' ' || aha.nachname, ', ') AS autor, ar.titel, ar.jahr, ar.journal
+            $query =   "SELECT h.device, STRING_AGG(aha.vorname || ' ' || aha.nachname, ', ') AS autor, ar.titel, ar.jahr, ar.journal
                         FROM artikel ar
-                        JOIN Artikel_has_Autor aha USING(DOI)
-                        WHERE ar.titel ILIKE '%!titel_filter%'
+                        JOIN Artikel_has_Autor aha ON ar.DOI = aha.DOI
+                        JOIN Artikel_has_Review ahr ON ar.DOI = ahr.A_DOI
+                        JOIN Review r ON ahr.R_DOI = r.DOI
+                        JOIN Review_uses_HMD ruh ON r.DOI = ruh.DOI
+                        JOIN HMD h ON ruh.device = h.device
+                        WHERE h.device ILIKE '%!device_filter%'
+                        AND ar.titel ILIKE '%!titel_filter%'
                         AND ar.jahr >= !min_a_jahr_filter AND ar.jahr <= !max_a_jahr_filter
                         AND ar.journal ILIKE '%!journal_filter%'
-                        GROUP BY ar.titel, ar.jahr, ar.journal
+                        GROUP BY h.device, ar.titel, ar.jahr, ar.journal
                         HAVING STRING_AGG(aha.vorname || ' ' || aha.nachname, ', ') ILIKE '%!autor_filter%'
                         ORDER BY !orderBy !order
                         LIMIT !limit";
@@ -23,6 +28,7 @@
             // Query abschicken
             $result = $DB->send_query($query, 
                 array(
+                    "!device_filter" => $_POST["device_filter"],
                     "!autor_filter" => $_POST["autor_filter"],
                     "!titel_filter" => $_POST["titel_filter"],
                     "!min_a_jahr_filter" => $_POST["min_a_jahr_filter"] == "" ? 0 : $_POST["min_a_jahr_filter"],
@@ -50,6 +56,7 @@
                     break;
                 }
                 $table_rows[] = "<tr class=\"row\">
+                                <td>" . search_highlight($row["device"], $_POST["device_filter"]) . "</td>
                                 <td>" . search_highlight($row["autor"], $_POST["autor_filter"]) . "</td>
                                 <td>" . search_highlight($row["titel"], $_POST["titel_filter"]) . "</td>
                                 <td>" . $row["jahr"] . "</td>
