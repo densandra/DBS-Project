@@ -2,10 +2,6 @@
  * Body
  */
 
-html {
-    overflow-y:scroll;
-}
-
 body {
     font-family: Arial, sans-serif;
     font-size: 15px;
@@ -13,11 +9,11 @@ body {
 
 #ajax_content {
     /* width: 940px; */
-    min-height: 750px;
+    /* min-height: 750px; */
     padding: 20px 0 0 0;
-    margin-left: auto;
+    /* margin-left: auto;
     margin-right: auto;
-    overflow: auto;
+    overflow: auto; */
 }
 
 /*
@@ -69,7 +65,13 @@ li a:hover, .active, .sortable:hover {
 }
 
 .filter {
-    background: #EFEFEF;
+    background: #e2e3e5;
+}
+
+.center {
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 #max_a_jahr_filter, #min_a_jahr_filter {
@@ -81,6 +83,20 @@ li a:hover, .active, .sortable:hover {
     color: #7e9ff0;
 }
 
+#tableContainer {
+    width: 96%;
+    max-height: 520px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#tableContainer thead {
+    position: sticky;
+    top: 0;
+}
+
 table {
     border-collapse: collapse;
     /* table-layout: fixed;  */
@@ -88,17 +104,21 @@ table {
 }
 
 td, th {
-    border: 1px solid #FFF;   
     text-align: left;
     padding: 2px 6px;
     word-wrap: break-word;
     overflow-wrap: break-word; 
 }
 
+td {
+  box-shadow: inset 1px -1px #FFF;
+}
+
 th {
-    background: #1A243E;
-    color: #FFF;
-    font-weight: bold;
+  box-shadow: inset 1px 0 #FFF;
+  background: #1A243E;
+  color: #FFF;
+  font-weight: bold;
 }
 
 input[type="text"] {
@@ -110,12 +130,8 @@ input[type="text"] {
     width: 85px;
 }
 
-/* #autor_column, #titel_column {
-    width: 80px;
-} */
-
 tr {
-    background: #EFEFEF;
+    background: #e2e3e5;
 }
 
 tr:hover {

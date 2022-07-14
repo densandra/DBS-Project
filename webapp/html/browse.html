@@ -1,50 +1,54 @@
-<table>
-    <tr>
-        <th id="device_column" class="sortable asc" data-defaultorder="asc" data-sort="h.name">
-            HMD
-        </th>
-        <th id="ar_vs_vr_column" class="sortable asc" data-defaultorder="asc" data-sort="h.typ">
-            AR vs. VR
-        </th>
-        <th id="autor_column">
-            Autor
-        </th>
-        <th id="titel_column" class="sortable asc" data-defaultorder="asc" data-sort="ar.titel">
-            Titel
-        </th>
-        <th id="a_jahr_column" class="sortable desc nulls_last" data-defaultorder="desc nulls_last" data-sort="ar.jahr">
-            Artikeljahr
-        </th>
-        <th id="journal_column" class="sortable asc" data-defaultorder="asc" data-sort="ar.journal">
-            Journal
-        </th>
-    </tr>
-    <tr>
-        <td class="filter">
-            <input placeholder="filtern" id="device_filter" type="text" autocomplete="off">
-        </td>
-        <td class="filter">
-            <select id="ar_vs_vr_filter">
-                <option value="-">-</option>
-                <option value="VR">VR</option>
-                <option value="AR">AR</option>
-            </select>
-        </td>
-        <td class="filter">
-            <input placeholder="filtern" id="autor_filter" type="text" autocomplete="off">
-        </td>
-        <td class="filter">
-            <input placeholder="filtern" id="titel_filter" type="text" autocomplete="off">
-        </td>
-        <td class="filter">
-            <input id="min_a_jahr_filter" placeholder="min" type="text" autocomplete="off">
-            <input id="max_a_jahr_filter" placeholder="max" type="text" autocomplete="off">
-        </td>
-        <td class="filter">
-            <input placeholder="filtern" id="journal_filter" type="text" autocomplete="off">
-        </td>
-    </tr>
-</table>
+<div id="tableContainer">
+    <table>
+        <thead>
+            <tr>
+                <th id="device_column" class="sortable asc" data-defaultorder="asc" data-sort="h.name">
+                    HMD
+                </th>
+                <th id="ar_vs_vr_column" class="sortable asc" data-defaultorder="asc" data-sort="h.typ">
+                    Typ
+                </th>
+                <th id="autor_column">
+                    Autor
+                </th>
+                <th id="titel_column" class="sortable asc" data-defaultorder="asc" data-sort="ar.titel">
+                    Titel
+                </th>
+                <th id="a_jahr_column" class="sortable desc nulls_last" data-defaultorder="desc nulls_last" data-sort="ar.jahr">
+                    Artikeljahr
+                </th>
+                <th id="journal_column" class="sortable asc" data-defaultorder="asc" data-sort="ar.journal">
+                    Journal
+                </th>
+            </tr>
+            <tr>
+                <td class="filter">
+                    <input placeholder="filtern" id="device_filter" type="text" autocomplete="off">
+                </td>
+                <td class="filter">
+                    <select id="ar_vs_vr_filter">
+                        <option value="-">-</option>
+                        <option value="VR">VR</option>
+                        <option value="AR">AR</option>
+                    </select>
+                </td>
+                <td class="filter">
+                    <input placeholder="filtern" id="autor_filter" type="text" autocomplete="off">
+                </td>
+                <td class="filter">
+                    <input placeholder="filtern" id="titel_filter" type="text" autocomplete="off">
+                </td>
+                <td class="filter">
+                    <input id="min_a_jahr_filter" placeholder="min" type="text" autocomplete="off">
+                    <input id="max_a_jahr_filter" placeholder="max" type="text" autocomplete="off">
+                </td>
+                <td class="filter">
+                    <input placeholder="filtern" id="journal_filter" type="text" autocomplete="off">
+                </td>
+            </tr>
+        </thead>
+    </table>
+</div>
 <!--
 Empirisch, Feld, Thema
 Hersteller, Jahr, Display

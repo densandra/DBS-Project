@@ -48,11 +48,9 @@
             while ($row = $result->fetch_row()) {
                 $counter++; 
                 if ($counter == $_POST["limit"]) {
-                    $table_rows[] = "<tr class=\"loadmore\">
-                                    <td class=\"center\" colspan=\"4\">
-                                        <span class=\"info-text\" >( weitere 100 Ergebnisse laden <img src=\"images/load.png\" /> )</span>
-                                    </td>
-                                </tr>";
+                    $table_rows[] = "<tr id=\"loadmore\" class=\"row\">
+                                        <td colspan=\"100%\" class=\"center\">weitere 50 Ergebnisse laden</td>
+                                    </tr>";
                     break;
                 }
                 $table_rows[] = "<tr class=\"row\">

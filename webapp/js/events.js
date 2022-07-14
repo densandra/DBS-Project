@@ -46,12 +46,12 @@ $(function() {
 
     //Filter Tabellenzeilen, wenn in Filter getippt wird
     $("#ajax_content").on("input", ".filter", function() {
-        limit = 100;
+        limit = 50;
         getTable();
     });
 
-    $("#ajax_content").on("click", ".loadmore", function() {
-        limit += 100;
+    $("#ajax_content").on("click", "#loadmore", function() {
+        limit += 50;
         getTable();
     });
 })   

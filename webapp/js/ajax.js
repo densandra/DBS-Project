@@ -76,12 +76,11 @@ function returnFromAjax(name, outputData) {
             case "table":
                 if (returnData["action"] == "load_table") {
                     //Tabellenzeilen entfernen
-                    $(".row, .loadmore").remove();
+                    $(".row").remove();
                     //Zeilen anhängen
                     for (var row of returnData["table_rows"]) {
                         $("table").append(row);
                     }
-                    $(".info-text").html("( weitere 100 Ergebnisse laden !image )", {"!image": "<img src=\"images/load.png\" />"});
                 } 
                 break;
         }

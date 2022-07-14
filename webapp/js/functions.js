@@ -3,7 +3,7 @@
  */
 var ajaxCalls = {};
 //Maximale Anzahl an Tabellenzeilen
-var limit = 100;
+var limit = 50;
 
 /* 
  * Hilfsfunktionen
@@ -40,7 +40,7 @@ function loadViewSettings(ansicht) {
     switch(ansicht) {
         case "browse":
             $("#device_column").addClass("active");
-            limit = 100;
+            limit = 50;
             getTable();
             break;
         case "statistics":
