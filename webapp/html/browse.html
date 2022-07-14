@@ -8,6 +8,9 @@
                 <th id="ar_vs_vr_column" class="sortable asc" data-defaultorder="asc" data-sort="h.typ">
                     Typ
                 </th>
+                <th id="doi_column" class="sortable asc" data-defaultorder="asc" data-sort="ar.doi">
+                    DOI
+                </th>
                 <th id="autor_column">
                     Autor
                 </th>
@@ -19,6 +22,12 @@
                 </th>
                 <th id="journal_column" class="sortable asc" data-defaultorder="asc" data-sort="ar.journal">
                     Journal
+                </th>
+                <th id="typ_column" class="sortable asc" data-defaultorder="asc" data-sort="ar.typ">
+                    Artikeltyp
+                </th>
+                <th id="quelle_column" class="sortable asc" data-defaultorder="asc" data-sort="ar.quelle">
+                    Quelle
                 </th>
             </tr>
             <tr>
@@ -33,6 +42,9 @@
                     </select>
                 </td>
                 <td class="filter">
+                    <input placeholder="filtern" id="doi_filter" type="text" autocomplete="off">
+                </td>
+                <td class="filter">
                     <input placeholder="filtern" id="autor_filter" type="text" autocomplete="off">
                 </td>
                 <td class="filter">
@@ -45,43 +57,18 @@
                 <td class="filter">
                     <input placeholder="filtern" id="journal_filter" type="text" autocomplete="off">
                 </td>
+                <td class="filter">
+                    <input placeholder="filtern" id="typ_filter" type="text" autocomplete="off">
+                </td>
+                <td class="filter">
+                    <select id="quelle_filter">
+                        <option value="-">-</option>
+                        <option value="BSP">BSP</option>
+                        <option value="SB">SB</option>
+                        <option value="WOS">WOS</option>
+                    </select>
+                </td>
             </tr>
         </thead>
     </table>
 </div>
-<!--
-Empirisch, Feld, Thema
-Hersteller, Jahr, Display
-
-SELECT h.device, h.ar_vs_vr, STRING_AGG(aha.vorname || ' ' || aha.nachname, ', ') AS autor, ar.titel, ar.jahr, ar.journal
-FROM artikel ar
-JOIN Artikel_has_Autor aha ON ar.DOI = aha.DOI
-JOIN Artikel_has_Review ahr ON ar.DOI = ahr.A_DOI
-JOIN Review r ON ahr.R_DOI = r.DOI
-JOIN Review_uses_HMD ruh ON r.DOI = ruh.DOI
-JOIN HMD h ON ruh.device = h.device
-WHERE h.device ILIKE '%%'
-AND h.ar_vs_vr = 'VR'
-AND ar.titel ILIKE '%%'
-AND ar.jahr >= 2020 AND ar.jahr <= 2020
-AND ar.journal ILIKE '%%'
-GROUP BY h.device, h.ar_vs_vr, ar.titel, ar.jahr, ar.journal
-HAVING STRING_AGG(aha.vorname || ' ' || aha.nachname, ', ') ILIKE '%%'
-ORDER BY ar.titel ASC
-LIMIT 100
-
-SELECT h.name, h.typ, STRING_AGG(da.vorname || ' ' || da.nachname, ', ') AS autor, ar.titel, ar.jahr, ar.journal
-FROM artikel ar
-JOIN doi_autor da ON ar.DOI = da.DOI
-JOIN doi_hmd dh ON ar.DOI = dh.DOI
-JOIN hmd h ON dh.name = h.name
-WHERE h.name ILIKE '%%'
-AND h.typ = 'VR'
-AND ar.titel ILIKE '%%'
-AND ar.jahr >= 2020 AND ar.jahr <= 2020
-AND ar.journal ILIKE '%%'
-GROUP BY h.name, h.typ, ar.titel, ar.jahr, ar.journal
-HAVING STRING_AGG(da.vorname || ' ' || da.nachname, ', ') ILIKE '%%'
-ORDER BY h.name ASC
-LIMIT 100
--->
