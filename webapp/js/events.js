@@ -50,6 +50,13 @@ $(function() {
         getTable();
     });
 
+    // Checkboxen werden betätigt
+    $("#ajax_content").on("change", "input[type=checkbox]", function() {
+        var column = $(this).attr("name");
+        $("td:nth-child(" + column + "),th:nth-child(" + column + ")").toggle();
+    });
+
+    // mehr Zeilen laden
     $("#ajax_content").on("click", "#loadmore", function() {
         limit += 50;
         getTable();

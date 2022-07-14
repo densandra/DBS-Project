@@ -81,6 +81,13 @@ function returnFromAjax(name, outputData) {
                     for (var row of returnData["table_rows"]) {
                         $("table").append(row);
                     }
+                    
+                    $("input[type=checkbox]").each(function() {
+                        if (!$(this).prop("checked")) {
+                            var column = $(this).attr("name");
+                            $("td:nth-child(" + column + "),th:nth-child(" + column + ")").hide();
+                        }
+                    })
                 } 
                 break;
         }

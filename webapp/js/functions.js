@@ -50,12 +50,6 @@ function loadViewSettings(ansicht) {
 
 // Texte für Tabelle laden
 function getTable() {
-    // Wie mit Nullwerten bei Tabellensortierung verfahren
-    // var nulls = "";
-    // if ($("th.active").is("#date_column")) {
-    //     nulls = $("th.active").hasClass("nulls_last") ? "NULLS LAST" : "NULLS FIRST";
-    // }
-    // Tabellenzeilen laden
     ajaxCall("table", {
         action: "load_table",
         device_filter: $("#device_filter").val(),
@@ -75,7 +69,6 @@ function getTable() {
         typ_filter: $("#typ_filter").val(),
         quelle_filter: $("#quelle_filter").val(),
         limit: limit,
-        // nulls: nulls,
         orderBy: $("th.active").attr("data-sort"), 
         order: $("th.active").hasClass("asc") ? "ASC" : "DESC"
     });
