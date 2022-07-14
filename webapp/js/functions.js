@@ -59,7 +59,13 @@ function getTable() {
     ajaxCall("table", {
         action: "load_table",
         device_filter: $("#device_filter").val(),
+        hersteller_filter: $("#hersteller_filter").val(),
         ar_vs_vr_filter: $("#ar_vs_vr_filter").val(),
+        min_h_jahr_filter: $("#min_h_jahr_filter").val(),
+        max_h_jahr_filter: $("#max_h_jahr_filter").val(),
+        min_h_preis_filter: $("#min_h_preis_filter").val(),
+        max_h_preis_filter: $("#max_h_preis_filter").val(),
+        display_filter: $("#display_filter").val(),
         doi_filter: $("#doi_filter").val(),
         autor_filter: $("#autor_filter").val(),
         titel_filter: $("#titel_filter").val(),

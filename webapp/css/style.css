@@ -74,7 +74,9 @@ li a:hover, .active, .sortable:hover {
     font-weight: bold;
 }
 
-#max_a_jahr_filter, #min_a_jahr_filter {
+#max_a_jahr_filter, #min_a_jahr_filter, #max_h_jahr_filter, #min_h_jahr_filter,
+#max_h_preis_filter, #min_h_preis_filter
+{
     width: 40px;
 }
 
@@ -99,7 +101,7 @@ li a:hover, .active, .sortable:hover {
 
 table {
     border-collapse: collapse;
-    /* table-layout: fixed;  */
+    table-layout: fixed; 
     width:100%;
 }
 
@@ -126,14 +128,62 @@ input[type="text"] {
     width: 100%;
 }
 
-#a_jahr_column {
-    width: 85px;
-}
-
 tr {
     background: #e2e3e5;
 }
 
 tr:hover {
     background-color: #ccc;
+}
+
+#device_column {
+    width: 130px;
+}
+
+#hersteller_column {
+    width: 90px;
+}
+
+#ar_vs_vr_column {
+    width: 60px;
+}
+
+#h_jahr_column {
+    width: 85px;
+}
+
+#display_column {
+    width: 110px;
+}
+
+#doi_column {
+    width: 240px;
+}
+
+#autor_column {
+    width: 300px;
+}
+
+#titel_column {
+    width: 350px;
+}
+
+#a_jahr_column {
+    width: 85px;
+}
+
+#journal_column {
+    width: 240px;
+}
+
+#typ_column {
+    width: 85px;
+}
+
+#quelle_column {
+    width: 55px;
+}
+
+#preis_column {
+    width: 85px;
 }

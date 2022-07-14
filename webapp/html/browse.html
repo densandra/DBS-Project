@@ -5,8 +5,20 @@
                 <th id="device_column" class="sortable asc" data-defaultorder="asc" data-sort="h.name">
                     HMD
                 </th>
+                <th id="hersteller_column" class="sortable asc" data-defaultorder="asc" data-sort="h.hersteller">
+                    Hersteller
+                </th>
                 <th id="ar_vs_vr_column" class="sortable asc" data-defaultorder="asc" data-sort="h.typ">
                     Typ
+                </th>
+                <th id="h_jahr_column" class="sortable asc" data-defaultorder="asc" data-sort="h.jahr">
+                    HMD Jahr
+                </th>
+                <th id="preis_column" class="sortable asc" data-defaultorder="asc" data-sort="h.preis">
+                    Preis in $
+                </th>
+                <th id="display_column" class="sortable asc" data-defaultorder="asc" data-sort="h.display">
+                    Display
                 </th>
                 <th id="doi_column" class="sortable asc" data-defaultorder="asc" data-sort="ar.doi">
                     DOI
@@ -17,7 +29,7 @@
                 <th id="titel_column" class="sortable asc" data-defaultorder="asc" data-sort="ar.titel">
                     Titel
                 </th>
-                <th id="a_jahr_column" class="sortable desc nulls_last" data-defaultorder="desc nulls_last" data-sort="ar.jahr">
+                <th id="a_jahr_column" class="sortable asc" data-defaultorder="asc" data-sort="ar.jahr">
                     Artikeljahr
                 </th>
                 <th id="journal_column" class="sortable asc" data-defaultorder="asc" data-sort="ar.journal">
@@ -35,11 +47,26 @@
                     <input placeholder="filtern" id="device_filter" type="text" autocomplete="off">
                 </td>
                 <td class="filter">
+                    <input placeholder="filtern" id="hersteller_filter" type="text" autocomplete="off">
+                </td>
+                <td class="filter">
                     <select id="ar_vs_vr_filter">
                         <option value="-">-</option>
                         <option value="VR">VR</option>
                         <option value="AR">AR</option>
+                        <option value="NONE">NONE</option>
                     </select>
+                </td>
+                <td class="filter">
+                    <input id="min_h_jahr_filter" placeholder="min" type="text" autocomplete="off">
+                    <input id="max_h_jahr_filter" placeholder="max" type="text" autocomplete="off">
+                </td>
+                <td class="filter">
+                    <input id="min_h_preis_filter" placeholder="min" type="text" autocomplete="off">
+                    <input id="max_h_preis_filter" placeholder="max" type="text" autocomplete="off">
+                </td>
+                <td class="filter">
+                    <input placeholder="filtern" id="display_filter" type="text" autocomplete="off">
                 </td>
                 <td class="filter">
                     <input placeholder="filtern" id="doi_filter" type="text" autocomplete="off">
