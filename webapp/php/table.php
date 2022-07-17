@@ -8,7 +8,7 @@
             $table_rows = array();                
             $_POST["limit"] += 1;
             
-            // SQL-Query für Tabelle zusammensetzen und abschicken
+            // SQL-Query für Tabelle zusammensetzen
             $query =   "SELECT h.name, h.typ AS ar_vs_vr, h.jahr AS h_jahr, h.preis, h.display, h.hersteller,
                                ar.doi, STRING_AGG(da.vorname || ' ' || da.nachname, ', ') AS autor, 
                                ar.titel, ar.jahr, ar.journal, ar.typ, ar.quelle
@@ -43,7 +43,7 @@
                     "!min_h_jahr_filter" => $_POST["min_h_jahr_filter"] == "" || !is_numeric($_POST["min_h_jahr_filter"]) ? 0 : $_POST["min_h_jahr_filter"],
                     "!max_h_jahr_filter" => $_POST["max_h_jahr_filter"] == "" || !is_numeric($_POST["max_h_jahr_filter"]) ? 3000 : $_POST["max_h_jahr_filter"],
                     "!min_h_preis_filter" => $_POST["min_h_preis_filter"] == "" || !is_numeric($_POST["min_h_preis_filter"]) ? 0 : $_POST["min_h_preis_filter"],
-                    "!max_h_preis_filter" => $_POST["max_h_preis_filter"] == "" || !is_numeric($_POST["max_h_preis_filter"]) ? 3000 : $_POST["max_h_preis_filter"],
+                    "!max_h_preis_filter" => $_POST["max_h_preis_filter"] == "" || !is_numeric($_POST["max_h_preis_filter"]) ? 240000 : $_POST["max_h_preis_filter"],
                     "!display_filter" => $_POST["display_filter"],
                     "!doi_filter" => $_POST["doi_filter"],
                     "!autor_filter" => $_POST["autor_filter"],
